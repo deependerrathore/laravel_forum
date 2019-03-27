@@ -5,14 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Forum Threads</div>
+                <div class="card-header">{{$thread->title}}</div>
 
                 <div class="card-body">
-                    @foreach ($threads as $thread)
-                        <h4><a href="threads/{{$thread->id}}">{{$thread->title}}</a></h4>
                         <div class="body">{{$thread->body}}</div>
                         <hr>
-                    @endforeach
                 </div>
             </div>
         </div>
