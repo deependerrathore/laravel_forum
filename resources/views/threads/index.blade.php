@@ -1,27 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Forum Threads</div>
-
-                <div class="card-body">
-                    @foreach ($threads as $thread)
-                        <h4><a href="{{$thread->path()}}">{{$thread->title}}</a></h4>
-                        <div class="body">{{$thread->body}}</div>
-                        <hr>
-                        <el-button>Default</el-button>
-                        <el-button type="primary">Primary</el-button>
-
-
-                    @endforeach
-                </div>
-            </div>
+<el-row>
+    <el-col :span="24">
+        <div>
+            @foreach ($threads as $thread)    
+                <el-card class="box-card m-b-10">
+                    <div slot="header" class="clearfix">
+                        <span><a href="{{$thread->path()}}">{{$thread->title}}</a></span>
+                    </div>
+                    <div class="text item">
+                        {{$thread->body}}
+                    </div>
+                </el-card>
+                
+            @endforeach
         </div>
-    </div>
-</div>
+    </el-col>
+</el-row>
+
 @endsection
 
 <script>
@@ -31,3 +28,4 @@
         });
     })
 </script>
+

@@ -1,35 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{$thread->title}}</div>
-
-                <div class="card-body">
-                        <div class="body">{{$thread->body}}</div>
-                        <hr>
+<el-row>
+    <el-col :span="24">
+        <div>
+            <el-card class="box-card m-b-10">
+                <div slot="header" class="clearfix">
+                    <span>{{$thread->title}}</span>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--replies-->
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header"><strong>REPLIES</strong></div>
-
-                @foreach ($thread->replies as $reply)    
-                    <div class="card-body">
-                            <div class="body">{{$reply->body}} ~ {{$reply->created_at->diffForHumans()}} by <a href="#">{{$reply->owner->name}}</a></div>
-                            <hr>
-                    </div>
-                @endforeach
+                <div class="text item">
+                    {{$thread->body}}
                 </div>
-            </div>
+            </el-card>
         </div>
-    </div>
+    </el-col>
+</el-row>
+    
+<el-row>
+    <el-col :span="24">
+            <div class="block">
+                    <el-timeline>
+                            @foreach ($thread->replies as $reply)    
 
-</div>
+                      <el-timeline-item timestamp="{{$reply->created_at}}" placement="top">
+                        <el-card>
+                          <h4>{{$reply->body}}</h4>
+                          <p>{{$reply->created_at->diffForHumans()}} by {{$reply->owner->name}}</p>
+                        </el-card>
+                      </el-timeline-item>
+                      @endforeach
+
+                    </el-timeline>
+                  </div>
+                  
+    </el-col>
+</el-row>
+      
 @endsection
