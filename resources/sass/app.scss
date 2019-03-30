@@ -1,12 +1,20 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//font-awesome
+@import 'node_modules/font-awesome/scss/font-awesome';
+
+
+// Bulma CSS framework
+@import 'node_modules/bulma/bulma';
+
+//Custom sass pages
+@import 'overrides.scss';
+@import 'helpers.scss';
+@import 'styles.scss';
 
 .navbar-laravel {
   background-color: #fff;
